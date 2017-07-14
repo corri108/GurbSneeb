@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 90263d047a6e3fb42abedb63b538faaa
+timeCreated: 1497779276
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Luxi Mono
+  fontNames:
+  - Luxi Mono
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
