@@ -12,6 +12,7 @@ public class Attack
     public int bonusLength = 0;
     public string attackName = "Attack 1";
     public string specialString = "regular attacks dont need this!";
+    public AttackObject attackObject;
 
     public Attack(AttackType t, int damage, int charge, string name, string specialDescription, int bonusLength)
     {

@@ -78,6 +78,11 @@ public class Card : MonoBehaviour {
         goTo = this.transform;
     }
 	
+    void UpdateHPString()
+    {
+        stats.transform.GetChild(1).GetComponent<TextMesh>().text = HP.ToString();
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
@@ -151,6 +156,28 @@ public class Card : MonoBehaviour {
         stats.sortingOrder = order + 1;
     }
 
+    public void TakeDamage(int amount)
+    {
+        this.HP -= amount;
+        PopTextManager.CreateText(this.transform.position + new Vector3(0, 02f, 0f),
+                "-" + amount.ToString(), new Color(1f, 0.3f, 0.3f), 51, 60, 75, true);
+        UpdateHPString();
+
+        if (HP <= 0)
+        {
+            PopTextManager.CreateText(this.transform.position - new Vector3(3.25f, 0.2f, 0f), 
+                "FATAL!", Color.red, 52, 100, 100, true);
+
+            Player owner = Table.GetPlayerFromID(ownerID);
+            owner.DestroyFieldCard();
+        }
+    }
+
+    public List<Attack> GetAttacks()
+    {
+        return attacks;
+    }
+
     public void SetFrontOrder(int order)
     {
         front.sortingOrder = order;
@@ -198,6 +225,13 @@ public class Card : MonoBehaviour {
     public bool HasLongAttackName()
     {
         return longAttackNameLength != -1;
+    }
+
+    public void AttackFinished()
+    {
+        Player owner = Table.GetPlayerFromID(ownerID);
+
+        owner.ActivatePhase();
     }
 
     public int GetLongAttackLength()

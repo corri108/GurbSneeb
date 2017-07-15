@@ -28,6 +28,7 @@ public class Table : MonoBehaviour {
     private void Start()
     {
         currentPlayerTurn = seats[0];
+        currentPlayerTurn.ActivatePhase();
     }
 
     // Update is called once per frame
